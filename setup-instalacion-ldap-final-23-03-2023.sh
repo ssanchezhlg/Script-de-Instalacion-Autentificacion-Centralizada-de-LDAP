@@ -1,14 +1,12 @@
 #!/bin/bash
 
-
-
 ### Declarar las Variabes para usar
-Proxy="http://10.10.10.3:3128"                                         # http://usuario:contraseña@servidor_proxy:puerto"
+Proxy="http://10.10.10.3:3128"                                         # http://usuario:contraseÃ±a@servidor_proxy:puerto"
 LdapBase="dc=cpicm,dc=hlg,dc=sld,dc=cu"
 LdapUri="ldaps://201.220.196.162"
 LdapUriPort="636"
 adminuser="cn=adminldap,dc=cpicm,dc=hlg,dc=sld,dc=cu"
-adminpassword="g4895QVAnEtk9SL3jDJsdfFUserAuthP3ndr4G0n"
+adminpassword="pass"
 domain="cpicm.hlg.sld.cu"
 
 
@@ -26,11 +24,6 @@ GG6DKnBXsQzBn4WYG9fHC52z53q3EhFepHI2WlOIwNHlUjfQsErIg6TTG0Z/P+00
 6dyh6t05fOiHVdiDRSXCmqG6BTzKCd3Xdfl4ZhAmU3g0dsavxuAil5L12YCJBD0n
 QVIJQ5/s9o/h1bGmMQJBAPyeS2BicbXxKXZlygO2UrM/kuPWtQRBwuTgk/kFtCIA
 VtIQyQ6bIhDxAEuJcM3x3yN2RNNMQTTM+d6eaqXp1/MCQQDsr39swYnNuyhHdNpP
-YGbwzH8exWwyYWEusWDzPVYxtwqtMPIsT0dJV2yJbtJY8Ted2pD81YRpgPFInHSM
-hkXzAkBxsezK3IPBF2FJ4FYjhZODCUHbOW8PE2ncCReQJHkGNJDeyp8y669RYKZ5
-WMpkZk+/biNb1h4i3X44K6RkN/LxAkEA69CvFJx/wAqIxykVmaBi7+fPf8kTU97S
-BMOV5MNn7YCBkq0BnEQgsmH4MbXIvfUXhJ8PddkGZFekDsRTGu9tIQJBAJ0l45g5
-Ecjmd7+q7UnbO+X37T9ggGcUNj7cqY/NvsFmxrmlxJOk5ZK01CkT8ZvdBez9sZMt
 Po92s/7vvnh6M2Q=
 -----END PRIVATE KEY-----
 -----BEGIN CERTIFICATE-----
@@ -43,18 +36,11 @@ A1UECAwHSG9sZ3VpbjEQMA4GA1UEBwwHSG9sZ3VpbjEOMAwGA1UECgwFQ1BJQ00x
 DjAMBgNVBAsMBUNQSUNNMRkwFwYDVQQDDBBjcGljbS5obGcuc2xkLmN1MSMwIQYJ
 KoZIhvcNAQkBFhRicmlhbkBpbmZvbWVkLnNsZC5jdTCBnzANBgkqhkiG9w0BAQEF
 AAOBjQAwgYkCgYEA6Y8bcDrMD4MV2MlUT28oQdxhHksLdryrBRMdoRRYlScPrsCR
-YZTk7eaFYzJEsUbMFpGKoVAUJGoM4dfxcAYdq0HTjLJDOvtmnSJtRQ2DXv160TNM
-RGk5SAJVtv3oBt6Z8eggKuA13/6C2KlLIFoS0qmg3djtdB8RmnfGj3FeeqkCAwEA
-AaNTMFEwHQYDVR0OBBYEFPZJwt0QfyPzi4JpC8iVSMnPWj3YMB8GA1UdIwQYMBaA
-FPZJwt0QfyPzi4JpC8iVSMnPWj3YMA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZIhvcN
-AQELBQADgYEAK0eZDKPNbEk8za9JzVNiD+jktVyGQNFNTOYmSgyp0prYanwagetD
-ZBUYIc8eqTlE0/AKpGXbTwP4kj6JpEqchSFpfKbrX0AFFJiHkQR1PgkHA0JGh7qg
+
 4RPA+Vxlxr7LeSoXczdYbcQG9UKAPM679D4PVZOAz6VI0CnAPOlj2Lg=
 -----END CERTIFICATE-----
 EOF
 )
-
-
 
 # Colores
 ROJO='\033[0;31m'
@@ -66,10 +52,10 @@ CIAN='\033[0;36m'
 DEFAULT='\033[0m'
 
 
-# Función para verificar errores y salir del script si ocurre alguno
+# FunciÃ³n para verificar errores y salir del script si ocurre alguno
 function verificar_error {
     if [ $? -ne 0 ]; then
-        echo -e "${ROJO}ERROR: Ocurrió un error al ejecutar el comando: $1${DEFAULT}"
+        echo -e "${ROJO}ERROR: OcurriÃ³ un error al ejecutar el comando: $1${DEFAULT}"
         exit 1
     fi
 }
@@ -77,10 +63,10 @@ function verificar_error {
 
 
 #### Configuraciones
-echo -e "\e[1;32mEste script es una herramienta muy útil para aquellos que necesitan implementar un sistema de autenticación centralizada contra un servidor LDAP. Una vez que se ejecute, el script realizará una copia de seguridad de los archivos antes de modificarlos, lo que garantiza la seguridad de los datos.\n\n\
-\e[1;34mAdemás, el script agregará las fuentes de Windows y también automatizará las particiones que tenga con Windows al inicio. De esta manera, se asegurará de que su sistema operativo funcione de manera más eficiente y sin problemas.\n\n\
-\e[1;35mPor si fuera poco, si lo desea, el script también puede quitar el navegador por defecto del sistema y agregar la última versión disponible de Mozilla que se encuentre en el FTP. Esto le permitirá navegar por la web de manera más segura y eficiente.\n\n\
-\e[1;33mEn resumen, este script es una herramienta muy útil para aquellos que necesitan un sistema de autenticación centralizado y también desean mejorar la eficiencia y seguridad de su sistema operativo. ¡Espero que te sea de ayuda!\n\n\\n\n\
+echo -e "\e[1;32mEste script es una herramienta muy Ãºtil para aquellos que necesitan implementar un sistema de autenticaciÃ³n centralizada contra un servidor LDAP. Una vez que se ejecute, el script realizarÃ¡ una copia de seguridad de los archivos antes de modificarlos, lo que garantiza la seguridad de los datos.\n\n\
+\e[1;34mAdemÃ¡s, el script agregarÃ¡ las fuentes de Windows y tambiÃ©n automatizarÃ¡ las particiones que tenga con Windows al inicio. De esta manera, se asegurarÃ¡ de que su sistema operativo funcione de manera mÃ¡s eficiente y sin problemas.\n\n\
+\e[1;35mPor si fuera poco, si lo desea, el script tambiÃ©n puede quitar el navegador por defecto del sistema y agregar la Ãºltima versiÃ³n disponible de Mozilla que se encuentre en el FTP. Esto le permitirÃ¡ navegar por la web de manera mÃ¡s segura y eficiente.\n\n\
+\e[1;33mEn resumen, este script es una herramienta muy Ãºtil para aquellos que necesitan un sistema de autenticaciÃ³n centralizado y tambiÃ©n desean mejorar la eficiencia y seguridad de su sistema operativo. Â¡Espero que te sea de ayuda!\n\n\\n\n\
 \e[1;32m\033[4mDebe de Editar el script para agregarle los datos de su red, al principio del mismo se encuentran las variables a usar!\n"
 
 read -p "Presione Enter para continuar..."
@@ -265,26 +251,26 @@ EOF
 )
 
 
-# Función para verificar errores y salir del script si ocurre alguno
+# FunciÃ³n para verificar errores y salir del script si ocurre alguno
 function verificar_error {
     if [ $? -ne 0 ]; then
-        echo -e "${ROJO}ERROR: Ocurrió un error al ejecutar el comando: $1${DEFAULT}"
+        echo -e "${ROJO}ERROR: OcurriÃ³ un error al ejecutar el comando: $1${DEFAULT}"
         exit 1
     fi
 }
 
 echo -e "${CIAN}=========================================="
-echo -e "Instalando utilidades básicas"
+echo -e "Instalando utilidades bÃ¡sicas"
 echo -e "==========================================${DEFAULT}"
 
 
 # Preguntar al usuario si desea utilizar el proxy
-read -p "¿Desea utilizar el proxy? (s/n): " usar_proxy
+read -p "Â¿Desea utilizar el proxy? (s/n): " usar_proxy
 
 while [ "$usar_proxy" != "s" ] && [ "$usar_proxy" != "n" ]
 do
-    echo -e "${ROJO}La opción ingresada no es válida. Intente nuevamente.${DEFAULT}"
-    read -p "¿Desea utilizar el proxy? (s/n): " usar_proxy
+    echo -e "${ROJO}La opciÃ³n ingresada no es vÃ¡lida. Intente nuevamente.${DEFAULT}"
+    read -p "Â¿Desea utilizar el proxy? (s/n): " usar_proxy
 done
 
 # Si el usuario desea utilizar el proxy, se definen las variables de entorno
@@ -319,12 +305,12 @@ read -p "Seleccione el repositorio que desea utilizar (1/2/3/4): " repositorio
 
 while [ "$repositorio" != "1" ] && [ "$repositorio" != "2" ] && [ "$repositorio" != "3" ] && [ "$repositorio" != "4" ]
 do
-    echo -e "${ROJO}La opción ingresada no es válida. Intente nuevamente.${DEFAULT}"
+    echo -e "${ROJO}La opciÃ³n ingresada no es vÃ¡lida. Intente nuevamente.${DEFAULT}"
     read -p "Seleccione el repositorio que desea utilizar (1/2/3/4): " repositorio
 done
 
-# Hacer una copia de seguridad de la configuración del sources.list
-echo -e "${AMARILLO}Haciendo una copia de seguridad de la configuración del sources.list${DEFAULT}"
+# Hacer una copia de seguridad de la configuraciÃ³n del sources.list
+echo -e "${AMARILLO}Haciendo una copia de seguridad de la configuraciÃ³n del sources.list${DEFAULT}"
 if [ ! -f /etc/apt/sources.list.ORIGINAL ]; then cp -pn /etc/apt/sources.list{,.ORIGINAL}; fi
 verificar_error "cp -pn /etc/apt/sources.list{,.ORIGINAL}"
 
@@ -359,8 +345,8 @@ echo -e "${AMARILLO}Instalando el software necesario${DEFAULT}"
 DEBIAN_FRONTEND=noninteractive apt-get -y install mc libnss-ldapd libpam-ldap libpam-cracklib doublecmd-gtk
 verificar_error "DEBIAN_FRONTEND=noninteractive apt-get -y install mc libnss-ldapd libpam-ldap libpam-cracklib doublecmd-gtk"
 
-# Eliminar dependencias y limpiar la caché
-echo -e "${AMARILLO}Eliminando dependencias y limpiando la caché${DEFAULT}"
+# Eliminar dependencias y limpiar la cachÃ©
+echo -e "${AMARILLO}Eliminando dependencias y limpiando la cachÃ©${DEFAULT}"
 apt-get -y autoremove --purge
 verificar_error "apt-get -y autoremove --purge"
 apt-get -y clean
@@ -371,13 +357,13 @@ echo -e "${AMARILLO}Estableciendo la zona horaria${DEFAULT}"
 timedatectl set-timezone America/Havana
 verificar_error "timedatectl set-timezone America/Havana"
 
-# Habilitar la sincronización por NTP
-echo -e "${AMARILLO}Habilitando la sincronización por NTP${DEFAULT}"
+# Habilitar la sincronizaciÃ³n por NTP
+echo -e "${AMARILLO}Habilitando la sincronizaciÃ³n por NTP${DEFAULT}"
 timedatectl set-ntp true
 verificar_error "timedatectl set-ntp true"
 
 echo -e "${AMARILLO}Configuramos ntp para que sincronice la hora con time.hlg.sld.cu${DEFAULT}"
-echo e "${AMARILLO}Editar el fichero de configuración, no sin antes hacerle una salva:${DEFAULT}"
+echo e "${AMARILLO}Editar el fichero de configuraciÃ³n, no sin antes hacerle una salva:${DEFAULT}"
 cp /etc/systemd/timesyncd.conf{,.orig}
 sed -i -r 's/#?(NTP)=.*$/\1=time\.hlg\.sld\.cu/' /etc/systemd/timesyncd.conf
 
@@ -387,11 +373,11 @@ sed -i -r 's/#?(NTP)=.*$/\1=time\.hlg\.sld\.cu/' /etc/systemd/timesyncd.conf
 #######################################################################################################################
 ###                                                                                                                 ###
 ###                                                                                                                 ###
-###                            Haciendo una copia de seguridad de la configuración                                  ###
+###                            Haciendo una copia de seguridad de la configuraciÃ³n                                  ###
 ###                                                                                                                 ###
 ###                                                                                                                 ###
 #######################################################################################################################
-echo -e "${AMARILLO}Haciendo una copia de seguridad de la configuración de /etc${DEFAULT}"
+echo -e "${AMARILLO}Haciendo una copia de seguridad de la configuraciÃ³n de /etc${DEFAULT}"
 
 ## /etc/ldap/ldap.conf
 if [ ! -f /etc/ldap/ldap.conf.ORIGINAL ]; then cp -p /etc/ldap/ldap.conf{,.ORIGINAL}; fi
@@ -483,7 +469,7 @@ verificar_error "echo -e '${etc_nsswitch_conf}' > /etc/nsswitch.conf"
 
 
 
-# Función para verificar si hubo algún error
+# FunciÃ³n para verificar si hubo algÃºn error
 function verificar_error {
     if [ $? -ne 0 ]; then
         echo -e "${ROJO}Hubo un error al ejecutar el comando: $1${DEFAULT}"
@@ -497,7 +483,7 @@ verificar_error "systemctl restart nscd"
 systemctl restart lightdm
 verificar_error "systemctl restart lightdm"
 
-# Notificar al usuario que la ejecución continúa
+# Notificar al usuario que la ejecuciÃ³n continÃºa
 echo -e "${VERDE}Los servicios han sido reiniciados.${DEFAULT}"
 
 
@@ -527,12 +513,12 @@ fc-cache -f
 #######################################################################################################################
 echo -e "${AMARILLO}Detectando particiones y montando las mismas${DEFAULT}"
 
-# Verificar si ntfs-3g está instalado, y si no, instalarlo silenciosamente
+# Verificar si ntfs-3g estÃ¡ instalado, y si no, instalarlo silenciosamente
 if ! dpkg -s ntfs-3g >/dev/null 2>&1; then
     apt-get install -y -qq ntfs-3g
 fi
 
-# Obtener información de las particiones NTFS detectadas
+# Obtener informaciÃ³n de las particiones NTFS detectadas
 disks=$(fdisk -l | grep -E "HPFS/NTFS" | awk '{print $1}')
 
 # Mostrar las particiones detectadas
@@ -541,28 +527,28 @@ echo $disks
 
 # Agregar un comentario para las particiones a montar en el archivo fstab
 echo " " >> /etc/fstab
-echo "## Particiones detectadas para montar automáticamente en el arranque" >> /etc/fstab
+echo "## Particiones detectadas para montar automÃ¡ticamente en el arranque" >> /etc/fstab
 
 
-# Contador para la creación de carpetas
+# Contador para la creaciÃ³n de carpetas
 i=1
 
 # Recorrer las particiones NTFS y obtener la ruta de dispositivo
 for disk in $disks; do
     dev_path="$disk"
     
-    # Crear carpeta para montar la partición
+    # Crear carpeta para montar la particiÃ³n
     carpetaMontar="/media/Datos$i"
     mkdir -p $carpetaMontar
     
-    # Agregar la información al archivo fstab para montar automáticamente en el arranque
+    # Agregar la informaciÃ³n al archivo fstab para montar automÃ¡ticamente en el arranque
     echo "$dev_path $carpetaMontar ntfs-3g auto,rw,users,umask=000 0 0" >> /etc/fstab
 
-    # Montar la partición
+    # Montar la particiÃ³n
     mount -a
     
-    # Mostrar mensaje de que la partición ha sido montada
-    echo "${AMARILLO}  La partición $dev_path ha sido montada en $carpetaMontar  ${DEFAULT}"
+    # Mostrar mensaje de que la particiÃ³n ha sido montada
+    echo "${AMARILLO}  La particiÃ³n $dev_path ha sido montada en $carpetaMontar  ${DEFAULT}"
     
     # Incrementar el contador
     i=$((i+1))
@@ -583,25 +569,25 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
-# Verificar si Mozilla Firefox está instalado
+# Verificar si Mozilla Firefox estÃ¡ instalado
 if which firefox >/dev/null; then
     native_version=$(firefox --version | awk '{print $3}')
-    echo -e "${yellow}Se ha detectado una versión nativa de Mozilla Firefox ($native_version).${NC}"
-    read -p "¿Desea eliminarla antes de instalar la versión más reciente? (s/n): " delete_native
+    echo -e "${yellow}Se ha detectado una versiÃ³n nativa de Mozilla Firefox ($native_version).${NC}"
+    read -p "Â¿Desea eliminarla antes de instalar la versiÃ³n mÃ¡s reciente? (s/n): " delete_native
 
     if [ "$delete_native" == "s" ]; then
-        # Eliminar la versión nativa de Firefox
+        # Eliminar la versiÃ³n nativa de Firefox
         apt-get remove -y firefox
-        echo -e "${green}La versión nativa de Mozilla Firefox ha sido eliminada.${NC}"
+        echo -e "${green}La versiÃ³n nativa de Mozilla Firefox ha sido eliminada.${NC}"
     else
-        echo -e "${green}La versión nativa de Mozilla Firefox se mantendrá.${NC}"
+        echo -e "${green}La versiÃ³n nativa de Mozilla Firefox se mantendrÃ¡.${NC}"
     fi
 fi
 
 # Verificar si hay otro navegador web instalado
 if which google-chrome >/dev/null; then
-    echo -e "${yellow}Se ha detectado que Google Chrome está instalado en el sistema.${NC}"
-    read -p "¿Desea eliminarlo antes de instalar la versión más reciente de Mozilla Firefox? (s/n): " delete_chrome
+    echo -e "${yellow}Se ha detectado que Google Chrome estÃ¡ instalado en el sistema.${NC}"
+    read -p "Â¿Desea eliminarlo antes de instalar la versiÃ³n mÃ¡s reciente de Mozilla Firefox? (s/n): " delete_chrome
 
     if [ "$delete_chrome" == "s" ]; then
         echo -e "${yellow}Eliminando Google Chrome...${NC}"
@@ -609,13 +595,13 @@ if which google-chrome >/dev/null; then
         apt-get remove -y google-chrome-stable
         echo -e "${green}Google Chrome ha sido eliminado.${NC}"
     else
-        echo -e "${green}Google Chrome se mantendrá.${NC}"
+        echo -e "${green}Google Chrome se mantendrÃ¡.${NC}"
     fi
 fi
 
 if which chromium-browser >/dev/null; then
-    echo -e "${yellow}Se ha detectado que Chromium está instalado en el sistema.${NC}"
-    read -p "¿Desea eliminarlo antes de instalar la versión más reciente de Mozilla Firefox? (s/n): " delete_chromium
+    echo -e "${yellow}Se ha detectado que Chromium estÃ¡ instalado en el sistema.${NC}"
+    read -p "Â¿Desea eliminarlo antes de instalar la versiÃ³n mÃ¡s reciente de Mozilla Firefox? (s/n): " delete_chromium
 
     if [ "$delete_chromium" == "s" ]; then
         echo -e "${yellow}Eliminando Chromium...${NC}"
@@ -623,12 +609,12 @@ if which chromium-browser >/dev/null; then
         apt-get remove -y chromium-browser
         echo -e "${green}Chromium ha sido eliminado.${NC}"
     else
-        echo -e "${green}Chromium se mantendrá.${NC}"
+        echo -e "${green}Chromium se mantendrÃ¡.${NC}"
     fi
 fi
 
 # Preguntar al usuario si quiere instalar Mozilla Firefox
-read -p "¿Desea instalar Mozilla Firefox? (s/n): " install_firefox
+read -p "Â¿Desea instalar Mozilla Firefox? (s/n): " install_firefox
 
 if [ "$install_firefox" == "s" ]; then
     # Descargar el archivo desde la URL proporcionada
@@ -636,7 +622,7 @@ if [ "$install_firefox" == "s" ]; then
 
     # Verificar la integridad del archivo descargado
     if ! bzip2 -tvv /tmp/firefox-111.0.tar.bz2 > /dev/null 2>&1; then
-        echo -e "${red}El archivo firefox-111.0.tar.bz2 está dañado o incompleto.${NC}"
+        echo -e "${red}El archivo firefox-111.0.tar.bz2 estÃ¡ daÃ±ado o incompleto.${NC}"
         exit 1
     fi
 
@@ -646,7 +632,7 @@ if [ "$install_firefox" == "s" ]; then
     # Mover la carpeta de Firefox a /opt
     mv firefox /opt/
 
-    # Crear un enlace simbólico para el lanzamiento de Firefox
+    # Crear un enlace simbÃ³lico para el lanzamiento de Firefox
     ln -s /opt/firefox/firefox /usr/bin/firefox
 
     # Crear un archivo firefox.desktop para lanzar Firefox
@@ -674,17 +660,17 @@ if [ "$install_firefox" == "s" ]; then
     cp /usr/share/applications/firefox.desktop /usr/share/applications/internet/
     chown root:root /usr/share/applications/internet/firefox.desktop
 
-    echo -e "${green}La instalación de Mozilla Firefox ha finalizado.${NC}"
+    echo -e "${green}La instalaciÃ³n de Mozilla Firefox ha finalizado.${NC}"
 else
-    echo -e "${green}La instalación de Mozilla Firefox ha sido cancelada por el usuario.${NC}"
+    echo -e "${green}La instalaciÃ³n de Mozilla Firefox ha sido cancelada por el usuario.${NC}"
 fi
 
 
-##  Mostrar mensaje de finalización
-echo -e "${VERDE}¡Gracias por usar nuestro script de instalación! Esperamos que te sea de gran utilidad. Recuerda que es importante reiniciar tu computadora para que los cambios tengan efecto.\nPor favor, reinicia tu PC para completar la instalación. ¡Hasta pronto!${DEFAULT}"
+##  Mostrar mensaje de finalizaciÃ³n
+echo -e "${VERDE}Â¡Gracias por usar nuestro script de instalaciÃ³n! Esperamos que te sea de gran utilidad. Recuerda que es importante reiniciar tu computadora para que los cambios tengan efecto.\nPor favor, reinicia tu PC para completar la instalaciÃ³n. Â¡Hasta pronto!${DEFAULT}"
 
 # Se muestra un mensaje para confirmar si se desea reiniciar la PC
-read -p "¿Deseas reiniciar tu PC? (S/N): " respuesta
+read -p "Â¿Deseas reiniciar tu PC? (S/N): " respuesta
 
 # Se verifica si la respuesta es "s" o "S"
 if [[ "$respuesta" == "s" || "$respuesta" == "S" ]]; then
@@ -692,7 +678,7 @@ if [[ "$respuesta" == "s" || "$respuesta" == "S" ]]; then
   # Se utiliza el comando "sudo reboot" para reiniciar la PC
   sudo reboot
 else
-  echo "No se reiniciará tu PC."
+  echo "No se reiniciarÃ¡ tu PC."
 fi
 
 
