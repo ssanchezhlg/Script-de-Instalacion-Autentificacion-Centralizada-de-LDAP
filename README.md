@@ -1,1 +1,1 @@
-# Script-de-Instalaci-n
+Script de Instalación para Sistema de Autentificación Centralizado con Ldap para clientes con Ubuntu o Nova 
