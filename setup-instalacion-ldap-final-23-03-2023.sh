@@ -1,7 +1,8 @@
 #!/bin/bash
 
 ### Declarar las Variabes para usar
-Proxy="http://10.10.10.3:3128"                                         # http://usuario:contraseña@servidor_proxy:puerto"
+# http://usuario:contraseña@servidor_proxy:puerto"
+Proxy="http://10.10.10.3:3128"                                         
 LdapBase="dc=cpicm,dc=hlg,dc=sld,dc=cu"
 LdapUri="ldaps://201.220.196.162"
 LdapUriPort="636"
